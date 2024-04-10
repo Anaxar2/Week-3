@@ -6,7 +6,8 @@ public class AnimalSpawner : MonoBehaviour
 {
     public GameObject[] animals;
     public int animalIndex;
-
+    public float spawnRangeX = 20;
+    public float spawnPosZ = 20;
 
 
     // Start is called before the first frame update
@@ -20,7 +21,10 @@ public class AnimalSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-         Instantiate(animals[animalIndex], new Vector3(0, 0, 20), animals[animalIndex].transform.rotation);
+            Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+            int animalIndex = Random.Range(0, animals.Length);
+
+         Instantiate(animals[animalIndex],spawnPos, animals[animalIndex].transform.rotation);
         }
     }
 }
