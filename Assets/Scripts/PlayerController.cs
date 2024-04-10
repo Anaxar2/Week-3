@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float verticalInput;
     public float speed = 10f;
     public float xRange = 10f;
-    public float zForwardRang = 6f;
+    public float zForwardRange = 6f;
+    public GameObject projectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -26,25 +27,35 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical"); //get input (forward and backwards) on the y axis.
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime *speed);
 
-        if (transform.position.x < -xRange) 
+        //rotate player
+       
+
+        if (transform.position.x < -xRange) // uses variable xRange for paramaters on the x axis.
         {
-            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z); //
         }
 
-        if (transform.position.x > xRange) 
+        if (transform.position.x > xRange) //uses variable xRange for paramaters on the x axis.
         {
             transform.position = new Vector3(xRange, transform.position.y , transform.position.z);
         }
 
-       if (transform.position.z < -1)
+       if (transform.position.z < -zForwardRange) // uses z axis as boundary.
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zForwardRange);
         }
 
-       if(transform.position.z > zForwardRang) 
+       if(transform.position.z > zForwardRange) // uses variable zForwardRange for paramaters going forward on the z axis
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zForwardRang);
+            transform.position = new Vector3(transform.position.x, transform.position.y, zForwardRange);
         }
+
+        if (Input.GetButtonDown("Fire1")) //uses spacebar for if statement.
+        {
+            
+            Instantiate(projectilePrefab, transform.position + new Vector3(0,1,0), projectilePrefab.transform.rotation); //Launch the projectile from the player
+        }
+
     }
 
 }
