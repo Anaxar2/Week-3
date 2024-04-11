@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime *speed);
 
         //rotate player
-       
+       Debug.Log(horizontalInput + " " + verticalInput);
 
         if (transform.position.x < -xRange) // uses variable xRange for paramaters on the x axis.
         {
@@ -50,9 +50,9 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zForwardRange);
         }
 
-        if (Input.GetButtonDown("Fire1")) //uses spacebar for if statement.
+        //if (Input.GetKeyDown(KeyCode.Mouse0)) //uses spacebar for if statement.
+        if (Input.GetButtonDown("Fire"))
         {
-            
             Instantiate(projectilePrefab, transform.position + new Vector3(0,1,0), projectilePrefab.transform.rotation); //Launch the projectile from the player
         }
 

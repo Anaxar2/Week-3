@@ -6,7 +6,8 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
     public Vector3 thirdPersonOffset = new Vector3(0,7,-10);
-    public Vector3 birdsViewOffset;
+    
+public Vector3 birdsViewOffset;
     private Vector3 currentOffset;
     private bool isThirdPerson = false;
     

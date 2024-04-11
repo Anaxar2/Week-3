@@ -7,12 +7,12 @@ public class AnimalControls : MonoBehaviour
     public float speed = 10.0f;
     public float topBound = 30f;
     public float lowerBound = -10f;
-
+    GameManager _gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _gm = GameObject.FindGameObjectWithTag("game manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -29,5 +29,25 @@ public class AnimalControls : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if (_gm.healthPoints <= 0)
+            {
+                _gm.healthPoints = 0;
+                Debug.Log("Game Over!");
+                Destroy(gameObject);
+
+            }
+            _gm.healthPoints -= 1;
+            Debug.Log("Hit");
+            Destroy(gameObject);
+        }
+       
+        
+         
+      
     }
 }
