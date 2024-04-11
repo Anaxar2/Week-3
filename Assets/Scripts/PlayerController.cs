@@ -50,8 +50,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zForwardRange);
         }
 
-        //if (Input.GetKeyDown(KeyCode.Mouse0)) //uses spacebar for if statement.
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetKeyDown(KeyCode.Mouse0)) //uses spacebar for if statement.
         {
             Instantiate(projectilePrefab, transform.position + new Vector3(0,1,0), projectilePrefab.transform.rotation); //Launch the projectile from the player
         }
