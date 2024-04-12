@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalInput;
-    public float verticalInput;
+    private float horizontalInput;
+    private float verticalInput;
     public float speed = 10f;
     public float xRange = 10f;
     public float zForwardRange = 6f;
+    public float turnSpeed = 1f;
     public GameObject projectilePrefab;
 
     // Start is called before the first frame update
@@ -28,7 +29,10 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime *speed);
 
         //rotate player
-       Debug.Log(horizontalInput + " " + verticalInput);
+        if (horizontalInput != 0)
+        {
+            transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
+        }
 
         if (transform.position.x < -xRange) // uses variable xRange for paramaters on the x axis.
         {

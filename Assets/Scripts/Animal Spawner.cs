@@ -26,10 +26,13 @@ public class AnimalSpawner : MonoBehaviour
     }
     void SpawnRandomAnimal()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
-        int animalIndex = Random.Range(0, animals.Length);
+     int animalIndex = Random.Range(0, animals.Length);
 
-        Instantiate(animals[animalIndex], spawnPos, animals[animalIndex].transform.rotation, transform);
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, Random.Range(-spawnPosZ, spawnPosZ));
+
+        Vector3 rotationSpawn = new Vector3(animals[animalIndex].transform.rotation.x, Random.Range(90, 270), animals[animalIndex].transform.rotation.z);
+        Instantiate(animals[animalIndex], spawnPos,Quaternion.Euler(rotationSpawn.x, rotationSpawn.y, rotationSpawn.z));
+
     }
 
 }
