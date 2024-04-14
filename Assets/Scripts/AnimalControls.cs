@@ -41,7 +41,7 @@ public class AnimalControls : MonoBehaviour
                 Destroy(gameObject);
             }
             
-            if (_gm.healthPoints <= 0)
+            if (_gm.healthPoints = 0)
             Debug.Log("Game Over!");
             Destroy(gameObject);
             //Destroy(other.gameObject);
