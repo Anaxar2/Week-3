@@ -34,17 +34,20 @@ public class AnimalControls : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-           
+
             {
                 _gm.healthPoints -= 1;
                 Debug.Log("Hit");
                 Destroy(gameObject);
             }
-            
-            if (_gm.healthPoints = 0)
-            Debug.Log("Game Over!");
-            Destroy(gameObject);
-            //Destroy(other.gameObject);
+
+            if (_gm.healthPoints == 0)
+            {
+                Debug.Log("Game Over!");
+                Destroy(gameObject);
+                Destroy(other.gameObject);
+            }
+           
 
         }
 
